@@ -3,12 +3,15 @@
 #include <cctype>
 #include "book.h"
 
+using namespace std;
 Book::Book()
 {
-    
+    strcpy(title,"");
+    strcpy(author, "");
+    price = 0;    
 }
 
-void set(const char* t, const char* a, Genre g, double p)
+Book::Book(char* t, char* a, Genre g, double p)
 {
     strcpy(title, t);
     strcpy(author, a);
@@ -16,28 +19,27 @@ void set(const char* t, const char* a, Genre g, double p)
     price = p;
 }
 
-const char* getTitle() const
+const char*Book::getTitle() const
 {
     return title;
 }
 
-const char* getAuthor() const
+const char* Book::getAuthor() const 
 {
     return author;
 }
 
-double getPrice() const
+double Book::getPrice() const
 {
     return price;
 }
 
-Genre getGenre() const
+Genre Book::getGenre() const
 {
     return type;
 }
 
-void display() const
+void Book::display() const
 {
-    cout << "Tittle" <<"                        " << "Author" << "                 "<< "Genre" <<"            "<<"price"<<"             " << endl;
-
+    cout << title << "\t\t\t" << author << "\t\t\t" << type << "\t\t\t" << "$" << price << "\t\t\t" << endl;
 }

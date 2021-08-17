@@ -4,7 +4,7 @@ class Book
 {
 public:
     Book();
-    void set(const char* t, const char* a, Genre g, double p);
+    Book(char* t, char* a, Genre g, double p);
     const char* getTitle() const;
     const char* getAuthor() const;
     double getPrice() const;
@@ -16,4 +16,4 @@ private:
     char author[21];
     Genre type;
     double price;
-}
+};
