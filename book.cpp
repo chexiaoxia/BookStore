@@ -41,5 +41,26 @@ Genre Book::getGenre() const
 
 void Book::display() const
 {
-    cout << title << "\t\t\t" << author << "\t\t\t" << type << "\t\t\t" << "$" << price << "\t\t\t" << endl;
+    cout << title << "\t\t\t\t\t" << author << "\t\t\t\t\t" << numToEnum(type) << "\t\t\t\t\t" << "$" << price << endl;
+}
+
+const char* Book::numToEnum(int n) const
+
+{
+    if(n == 0)
+    {
+        return "FICTION";
+    }
+    else if(n == 1)
+    {
+        return "MYSTERY";
+    }
+    else if(n == 2)
+    {
+        return "SCIFI";
+    }
+    else if(n == 3)
+    {
+        return "COMPUTER";
+    }
 }
