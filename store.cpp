@@ -101,12 +101,37 @@ bool Store::findAuthor(char* a)
     {
         if(strcmp(bookList[i].getAuthor(), a) == 0)
         {
-	    cout << bookList[i].getTitle() << ", ";
+	  /*  cout << bookList[i].getTitle() << ", ";
             cout << bookList[i].getAuthor() << ", ";
 	    cout << bookList[i].getGenre() << ", ";
 	    cout << bookList[i].getPrice() << endl;
+	    */
+	    bookList[i].display();
 	}
     }
 
     return true;
+}
+
+void Store::findGenre(const Genre type) const
+{
+    int count = 0;
+    double totalPrice = 0;
+    for(int i = 0; i < currentSize; i++)
+    {
+        if(bookList[i].getGenre() == type)
+	{
+	    /*cout << bookList[i].getTitle() << ", ";
+            cout << bookList[i].getAuthor() << ", ";
+	    cout << bookList[i].getGenre() << ", ";
+	    cout << bookList[i].getPrice() << endl;*/
+	    bookList[i].display();
+	    count++;
+	    totalPrice += bookList[i].getPrice();
+	}
+    }
+    cout << endl;
+
+    cout << "The quantity of this Genre type of book is: " << count << endl;
+    cout << "The sum of the prices of the books in this genre is: " << totalPrice << endl;
 }

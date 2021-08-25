@@ -16,6 +16,7 @@ public:
     void display();
     int findTitle(char* t);
     bool findAuthor(char* a);
+    void findGenre(const Genre type) const;
 private:
     double cashRegister;
     int currentSize;

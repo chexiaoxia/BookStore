@@ -123,7 +123,34 @@ int main()
 	    }
 	}
 
-    }while(choice != 'x' || choice != 'X');
+	if(choice == 'g' || choice == 'G')
+	{
+	    cout << "Which Genre type do you want to reach?" << endl;
+	    cout << "Enter Genre - (F)iction, (M)ystery, (S)ci-Fi, or (C)omputer:";
+	    enum Genre type;
+	    char select;
+	    cin >> select;
+            do{
+                //  For the books matching the selected genre only.
+                if (select == 'F' || select == 'f')
+                    type = FICTION;
+                else if (select == 'M' || select == 'm')
+                    type = MYSTERY;
+                else if (select == 'S' || select == 's')
+		    type = SCIFI;
+                else if (select == 'C' || select == 'c')
+                    type = COMPUTER;
+                else
+                {
+                    cout << "Invalid genre entry.  Please re-enter: ";
+                    cin >> select;
+                }
+
+	    }while(select != 'f' && select != 'F' && select != 'm' && select != 'M' && select != 's' && select != 'S' && select != 'c' && select !=              'C');
+            s.findGenre(type);
+        } 
+
+	}while(choice != 'x' || choice != 'X');
 
     cout << "Exit the program." << endl;
 }
