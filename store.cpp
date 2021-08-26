@@ -54,16 +54,23 @@ void Store::grow()
 
 void Store::saleBook(char* t)
 {
-    int p = findTitle(t);
-
-    for(int i = p ;i < currentSize; i++) 
-    {
-        bookList[i] = bookList[i+1];
-    }     
     
-    currentSize--;
-    cashRegister += getCashRegister();
-    cout << "Book sold" << endl;	
+    int p = findTitle(t);
+    if(p == -1)
+    {
+        cout << "No book found." << endl;
+    }
+    else
+    {
+        for(int i = p; i < currentSize - 1; i++) 
+        {
+            bookList[i] = bookList[i+1];
+        }        
+    
+        currentSize--;
+        cashRegister += getCashRegister();
+        cout << "Book sold" << endl;	
+    }
 }
 
 void Store::display()
@@ -80,19 +87,16 @@ void Store::display()
 
 int Store::findTitle(char* t)
 {
-    int i;
-    for( i = 0; i < currentSize; i++)
+    for( int i = 0; i < currentSize; i++)
     {
         if(strcmp(bookList[i].getTitle(), t) == 0)
         {
-	    cout << bookList[i].getTitle() << ", ";
-            cout << bookList[i].getAuthor() << ", ";
-	    cout << bookList[i].getGenre() << ", ";
-	    cout << bookList[i].getPrice() << endl;
+	    bookList[i].display();
+	    return i;
 	}
     }
 
-    return i;
+    return -1;
 }
 
 bool Store::findAuthor(char* a)
@@ -101,16 +105,12 @@ bool Store::findAuthor(char* a)
     {
         if(strcmp(bookList[i].getAuthor(), a) == 0)
         {
-	  /*  cout << bookList[i].getTitle() << ", ";
-            cout << bookList[i].getAuthor() << ", ";
-	    cout << bookList[i].getGenre() << ", ";
-	    cout << bookList[i].getPrice() << endl;
-	    */
 	    bookList[i].display();
+	    return true;
 	}
     }
 
-    return true;
+    return false;
 }
 
 void Store::findGenre(const Genre type) const
@@ -121,10 +121,6 @@ void Store::findGenre(const Genre type) const
     {
         if(bookList[i].getGenre() == type)
 	{
-	    /*cout << bookList[i].getTitle() << ", ";
-            cout << bookList[i].getAuthor() << ", ";
-	    cout << bookList[i].getGenre() << ", ";
-	    cout << bookList[i].getPrice() << endl;*/
 	    bookList[i].display();
 	    count++;
 	    totalPrice += bookList[i].getPrice();

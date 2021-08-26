@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cstring>
 #include <cctype>
 #include "book.h"
@@ -80,7 +81,6 @@ int main()
                     cin >> select;
                 }
 	    }while(select != 'f' && select != 'F' && select != 'm' && select != 'M' && select != 's' && select != 'S' && select != 'c' && select !=              'C');
-	    cout << " Invalid genre type. Try again." << endl; 
 	    cout << "Last one , please type in the price:" << endl;
 	    double price;
 	    cin >> price;
@@ -107,8 +107,7 @@ int main()
 	    cout << "If you choose title, please enter the title:" << endl;
 	    char title[30];
 	    cin.getline(title, 30);
-	    s.findTitle(title);
-            if(s.findTitle(title) == 0)
+            if(s.findTitle(title) == -1)
 	    {
 	        cout << "Not found book in store." << endl;
 	    }
@@ -116,11 +115,11 @@ int main()
 	    cout << "If you choose author, please ebter the author name:" << endl;
 	    char author[20];
 	    cin.getline(author,20);
-	    s.findAuthor(author);
-	    if(s.findAuthor(author) == 0)
+	    if(s.findAuthor(author) == false)
 	    {
 	         cout << "Not found book in store." << endl;
 	    }
+
 	}
 
 	if(choice == 'g' || choice == 'G')
@@ -148,9 +147,16 @@ int main()
 
 	    }while(select != 'f' && select != 'F' && select != 'm' && select != 'M' && select != 's' && select != 'S' && select != 'c' && select !=              'C');
             s.findGenre(type);
-        } 
 
-	}while(choice != 'x' || choice != 'X');
+	} 
 
+	if(choice == 'm' || choice == 'M')
+	{
+	    continue;
+	}
+
+    }while(choice != 'x' && choice != 'X');
+    
+    cout << "The final amount of money in the store cash register is: " << setprecision(2) << fixed << cashRegister << endl;
     cout << "Exit the program." << endl;
 }

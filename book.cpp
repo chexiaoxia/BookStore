@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <cstring>
 #include <cctype>
 #include "book.h"
@@ -41,7 +42,7 @@ Genre Book::getGenre() const
 
 void Book::display() const
 {
-    cout << title << "\t\t\t\t\t" << author << "\t\t\t\t\t" << numToEnum(type) << "\t\t\t\t\t" << "$" << price << endl;
+    cout << title << "\t\t\t\t\t" << author << "\t\t\t\t\t" << numToEnum(type) << "\t\t\t\t\t" << "$"  << setprecision(2) << fixed << price << endl;
 }
 
 const char* Book::numToEnum(int n) const
