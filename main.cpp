@@ -31,6 +31,7 @@ int main()
 	cout << endl;
     }
 */
+    // Build a class object then call it's member function.
     Store s;
     cout << "Please tell me the amount of money in the store cash register: " << s.getCashRegister() << endl;
     cout << "Please tell me  how many books in the inventory list: " << s.getCurrentSize() << endl;
@@ -41,6 +42,7 @@ int main()
     char choice;
     do
     {
+	// Show the menu every time.
         cout << "A:   Add a book to inventory" << endl; 
         cout << "F:   Find a book from inventory" << endl; 
         cout << "S:   Sell a book" << endl; 

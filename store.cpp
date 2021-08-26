@@ -34,6 +34,7 @@ void Store::addBook(char* t, char* a, Genre g,double p)
     {
         grow();
     }
+    // The added book's index is currentsize.
     bookList[currentSize] = b;
     currentSize++;
     cashRegister += p;
@@ -56,12 +57,14 @@ void Store::saleBook(char* t)
 {
     
     int p = findTitle(t);
+    // This means no book found.
     if(p == -1)
     {
         cout << "No book found." << endl;
     }
     else
     {
+	// Index should be less than currentsize.
         for(int i = p; i < currentSize - 1; i++) 
         {
             bookList[i] = bookList[i+1];
@@ -87,10 +90,12 @@ void Store::display()
 
 int Store::findTitle(char* t)
 {
+    // If the book foud ,return the index. If not found, return -1.
     for( int i = 0; i < currentSize; i++)
     {
         if(strcmp(bookList[i].getTitle(), t) == 0)
         {
+	    // Call display function.
 	    bookList[i].display();
 	    return i;
 	}

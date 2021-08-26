@@ -45,6 +45,7 @@ void Book::display() const
     cout << title << "\t\t\t\t\t" << author << "\t\t\t\t\t" << numToEnum(type) << "\t\t\t\t\t" << "$"  << setprecision(2) << fixed << price << endl;
 }
 
+// Change numbers to enum types.
 const char* Book::numToEnum(int n) const
 
 {

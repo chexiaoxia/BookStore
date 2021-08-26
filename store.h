@@ -10,6 +10,7 @@ public:
     ~Store();
     double getCashRegister() const;
     int getCurrentSize() const;
+    // After add book the number of books in the booklist will grow.
     void grow();
     void addBook(char* t, char* a, Genre type,double p);
     void saleBook(char* t);
@@ -20,6 +21,7 @@ public:
 private:
     double cashRegister;
     int currentSize;
+    // The number of allocated spaces may be at most 5 larger than the number of slots that are actually filled with real data.
     int maxSize;
     Book* bookList;
 };
